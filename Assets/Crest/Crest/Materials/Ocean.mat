@@ -13,6 +13,7 @@ Material:
   - _APPLYNORMALMAPPING_ON
   - _CAUSTICS_ON
   - _CLIPSURFACE_ON
+  - _CLIPUNDERTERRAIN_ON
   - _COMPUTEDIRECTIONALLIGHT_ON
   - _DEBUGVISUALISE_NONE
   - _FLOW_ON
@@ -110,7 +111,7 @@ Material:
     - _CausticsTextureAverage: 0.07
     - _CausticsTextureScale: 5
     - _ClipSurface: 1
-    - _ClipUnderTerrain: 0
+    - _ClipUnderTerrain: 1
     - _CompileShaderWithDebugInfo: 0
     - _ComputeDirectionalLight: 1
     - _CullMode: 0
@@ -130,7 +131,7 @@ Material:
     - _Flow: 1
     - _Foam: 1
     - _Foam3DLighting: 1
-    - _FoamBubbleParallax: 0.1
+    - _FoamBubbleParallax: 0.068
     - _FoamScale: 5
     - _FresnelPower: 5
     - _Invert: 1
@@ -173,16 +174,16 @@ Material:
     - _Transparency: 1
     - _Underwater: 1
     - _Update: 0.083
-    - _WaveFoamBubblesCoverage: 1.68
+    - _WaveFoamBubblesCoverage: 0.81
     - _WaveFoamBubblesFeather: 0.32
     - _WaveFoamBubblesStart: 0.115
     - _WaveFoamBubblesStrength: 0.637
     - _WaveFoamCoverage: 0.38
-    - _WaveFoamFeather: 0.377
-    - _WaveFoamLightScale: 1.12
-    - _WaveFoamNormalStrength: 3.5
+    - _WaveFoamFeather: 0.361
+    - _WaveFoamLightScale: 1.467
+    - _WaveFoamNormalStrength: 4.1
     - _WaveFoamNormalsY: 0.253
-    - _WaveFoamSpecularBoost: 0.8
+    - _WaveFoamSpecularBoost: 1.43
     - _WaveFoamSpecularFallOff: 293
     - _WaveFoamStart: 0
     - _WaveFoamStrength: 1
@@ -191,7 +192,7 @@ Material:
     - _Diffuse: {r: 0.08488235, g: 0.23505884, b: 0.333, a: 1}
     - _DiffuseGrazing: {r: 0.11572549, g: 0.16023529, b: 0.45400003, a: 1}
     - _DiffuseShadow: {r: 0, g: 0, b: 0, a: 1}
-    - _FoamBubbleColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FoamBubbleColor: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
     - _FoamWhiteColor: {r: 0.998553, g: 1, b: 0.972549, a: 0.6862745}
     - _SkyAwayFromSun: {r: 0.15419213, g: 0.22129796, b: 0.5372549, a: 1}
     - _SkyBase: {r: 0.55200005, g: 0.85242355, b: 1, a: 1}

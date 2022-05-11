@@ -146,9 +146,6 @@ public class Floater : MonoBehaviour
     void BuoyancyApplication(TriangleData td, out Vector3[] forces, out Vector3[] centroids)
     {
 
-        // transform this into the same triangle, but with equal height across everywhere
-
-
 
 
         forces = new Vector3[2] { new Vector3 { x = 0, y = 0, z = 0 }, new Vector3 { x = 0, y = 0, z = 0 } };
@@ -165,6 +162,7 @@ public class Floater : MonoBehaviour
             return;
         }
 
+        // transform this into the same triangle, but with equal height across everywhere
         Vector3[] vs1 = { td.vs[0], td.vs[1], td.vs[2] };
         float[] v_h1 = { td.vs_h[0], td.vs_h[1], td.vs_h[2] };
 
@@ -181,14 +179,11 @@ public class Floater : MonoBehaviour
         td = new TriangleData(vs1, _v_h1, td.vs_v, td.waterNormal, td.cw);
 
 
-        Quaternion rot = Quaternion.FromToRotation(Vector3.up, td.waterNormal);
-
-
+        // Split for integration, described in paper
         Vector3 opoint = (td.vs_h[1] - td.vs_h[2]) / (td.vs_h[0] - td.vs_h[2]) * (td.vs[0] - td.vs[2]) + td.vs[2];
         float o_height = td.vs_h[1];
 
         Debug.DrawLine(opoint, td.vs[1], Color.blue);
-
 
 
         float Q = (1 / Mathf.Sin(angoff * Mathf.PI / 180f));
@@ -330,53 +325,8 @@ public class Floater : MonoBehaviour
 
             }
 
+            // Split triangles, based on how many vertices are underwater
 
-            else if (td[i].vs_h[1] <= 0)
-            {
-
-                float tm = -td[i].vs_h[1] / (td[i].vs_h[2] - td[i].vs_h[1]);
-                float tl = -td[i].vs_h[0] / (td[i].vs_h[2] - td[i].vs_h[0]);
-
-                Vector3 im = td[i].vs[1] + tm * (td[i].vs[2] - td[i].vs[1]);
-                Vector3 il = td[i].vs[0] + tl * (td[i].vs[2] - td[i].vs[0]);
-
-                Vector3 vm = td[i].vs_v[1] + tm * (td[i].vs_v[2] - td[i].vs_v[1]);
-                Vector3 vl = td[i].vs_v[0] + tm * (td[i].vs_v[2] - td[i].vs_v[0]);
-
-                Vector3[] vs1 = { td[i].vs[0], td[i].vs[1], im };
-                float[] vs_h1 = { td[i].vs_h[0], td[i].vs_h[1], 0 };
-                Vector3[] vs_v1 = { td[i].vs_v[0], td[i].vs_v[1], vm };
-
-                Vector3[] vs2 = { td[i].vs[0], im, il };
-                float[] vs_h2 = { td[i].vs_h[0], 0, 0 };
-                Vector3[] vs_v2 = { td[i].vs_v[0], vm, vl };
-
-
-                TriangleData td1 = new TriangleData(vs1, vs_h1, vs_v1, td[i].waterNormal, td[i].cw);
-                TriangleData td2 = new TriangleData(vs2, vs_h2, vs_v2, td[i].waterNormal, td[i].cw);
-
-                td_underwater.Add(td1);
-                td_underwater.Add(td2);
-            }
-            else if (td[i].vs_h[0] <= 0)
-            {
-                float tm = -td[i].vs_h[0] / (td[i].vs_h[1] - td[i].vs_h[0]);
-                float th = -td[i].vs_h[0] / (td[i].vs_h[2] - td[i].vs_h[0]);
-
-                Vector3 jm = td[i].vs[0] + tm * (td[i].vs[1] - td[i].vs[0]);
-                Vector3 jh = td[i].vs[0] + th * (td[i].vs[2] - td[i].vs[0]);
-
-                Vector3 vm = td[i].vs_v[0] + tm * (td[i].vs_v[1] - td[i].vs_v[0]);
-                Vector3 vh = td[i].vs_v[0] + th * (td[i].vs_v[2] - td[i].vs_v[0]);
-
-
-                Vector3[] vs1 = { td[i].vs[0], jm, jh };
-                float[] vs_h1 = { td[i].vs_h[0], 0, 0 };
-                Vector3[] vs_v1 = { td[i].vs_v[0], vm, vh };
-
-                TriangleData td1 = new TriangleData(vs1, vs_h1, vs_v1, td[i].waterNormal, td[i].cw);
-                td_underwater.Add(td1);
-            }
             else if (td[i].vs_h[1] <= 0)
             {
 
@@ -449,6 +399,7 @@ public class Floater : MonoBehaviour
 
             float reynolds = settings.density * characteristic_dimension * effectiveVelocity.magnitude / settings.viscosity;
 
+            // Calculate coefficient using piecewise
             float coef = settings.r_fac / reynolds;
 
             if (reynolds > settings.cutoff_rey)
@@ -464,6 +415,7 @@ public class Floater : MonoBehaviour
             Vector3 normalV = Vector3.Dot(effectiveVelocity, td_underwater[i].normal) * td_underwater[i].normal;
             Vector3 lateralV = effectiveVelocity - normalV;
 
+            // Only apply drag if this face is ramming into water
             if (Vector3.Dot(effectiveVelocity, td_underwater[i].normal) > 0)
             {
 
@@ -477,7 +429,7 @@ public class Floater : MonoBehaviour
 
             //f += density * td_underwater[i].normal * td_underwater[i].area * (td_underwater[i].depth);
 
-
+            // Add forces, scale by time
             _rb.AddForceAtPosition(Time.fixedDeltaTime * f, td_underwater[i].center);
 
             BuoyancyApplication(td_underwater[i], out Vector3[] b_forces, out Vector3[] centroids);
