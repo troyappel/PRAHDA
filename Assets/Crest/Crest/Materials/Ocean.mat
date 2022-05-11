@@ -19,6 +19,7 @@ Material:
   - _FOAM3DLIGHTING_ON
   - _FOAM_ON
   - _OVERRIDEREFLECTIONCUBEMAP_ON
+  - _SHADOWS_ON
   - _SUBSURFACESCATTERING_ON
   - _TRANSPARENCY_ON
   - _UNDERWATER_ON
@@ -151,7 +152,7 @@ Material:
     - _RefractiveIndexOfWater: 1.333
     - _Roughness: 0
     - _S: 1
-    - _Shadows: 0
+    - _Shadows: 1
     - _ShorelineFoamMinDepth: 0.27
     - _SkyDirectionality: 0.875
     - _Specular: 1
@@ -189,7 +190,7 @@ Material:
     - _DepthFogDensity: {r: 0.3, g: 0.22, b: 0.3, a: 5}
     - _Diffuse: {r: 0.08488235, g: 0.23505884, b: 0.333, a: 1}
     - _DiffuseGrazing: {r: 0.11572549, g: 0.16023529, b: 0.45400003, a: 1}
-    - _DiffuseShadow: {r: 0.07952941, g: 0.11011764, b: 0.312, a: 1}
+    - _DiffuseShadow: {r: 0, g: 0, b: 0, a: 1}
     - _FoamBubbleColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamWhiteColor: {r: 0.998553, g: 1, b: 0.972549, a: 0.6862745}
     - _SkyAwayFromSun: {r: 0.15419213, g: 0.22129796, b: 0.5372549, a: 1}
