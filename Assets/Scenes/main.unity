@@ -717,7 +717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   density: 1
-  viscosity: 3
+  viscosity: 1
   cutoff_rey: 1000
   max_coef: 10
   calm_cutoff: 0
@@ -1776,14 +1776,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465321920}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.80214053, y: 0, z: 0, w: 0.59713537}
   m_LocalPosition: {x: 500, y: 0, z: 500}
   m_LocalScale: {x: 13.43, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3708377703484223119}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 106.67, y: 0, z: 0}
 --- !u!108 &1465321922
 Light:
   m_ObjectHideFlags: 0
@@ -1796,7 +1796,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.1
+  m_Intensity: 0.3
   m_Range: 500
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1841,7 +1841,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 12.8, y: NaN, z: NaN, w: 33.600002}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: NaN, w: 66.15851}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -2439,7 +2439,7 @@ MonoBehaviour:
   _version: 0
   _globalWindSpeed: 150
   _viewpoint: {fileID: 0}
-  _camera: {fileID: 0}
+  _camera: {fileID: 2876771014773452368}
   _teleportThreshold: 10
   _timeProvider: {fileID: 0}
   _primaryLight: {fileID: 8441528417587541800}
@@ -2464,7 +2464,7 @@ MonoBehaviour:
   _simSettingsDynamicWaves: {fileID: 11400000, guid: 2191178a667ebae4594740b717a322f6, type: 2}
   _createFlowSim: 0
   _simSettingsFlow: {fileID: 0}
-  _createShadowData: 1
+  _createShadowData: 0
   _simSettingsShadow: {fileID: 0}
   _createClipSurfaceData: 1
   _simSettingsClipSurface: {fileID: 0}
@@ -2680,7 +2680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _forceHeightOffset: -0.3
   _enginePower: 22
-  _turnPower: 4
+  _turnPower: 2
   _playerControlled: 1
   _throttleBias: 0
   _steerBias: 0
@@ -2759,14 +2759,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5149469442039121715}
-  m_LocalRotation: {x: 0.35880658, y: -0.26643604, z: 0.10764713, w: 0.88807756}
-  m_LocalPosition: {x: 0, y: 100, z: 0}
+  m_LocalRotation: {x: 0.45857194, y: 0, z: 0, w: 0.8886573}
+  m_LocalPosition: {x: 385, y: 48.9, z: -26.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3708377703484223119}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 44, y: -33.4, z: 0}
+  m_LocalEulerAnglesHint: {x: 54.59, y: 0, z: 0}
 --- !u!114 &4388562380617711524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2787,7 +2787,7 @@ MonoBehaviour:
   _overrideGlobalWindSpeed: 0
   _windSpeed: 150
   _weight: 1
-  _respectShallowWaterAttenuation: 0.927
+  _respectShallowWaterAttenuation: 0.968
   _componentsPerOctave: 8
   _randomSeed: 0
   _resolution: 32
@@ -2898,11 +2898,11 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.968912, b: 0.866, a: 1}
-  m_Intensity: 1.3
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 15.72
+  m_CookieSize: 15
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
